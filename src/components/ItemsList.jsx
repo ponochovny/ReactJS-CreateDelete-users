@@ -6,6 +6,9 @@ class ItemsList extends Component {
 	constructor(props) {
 		super(props);
 	}
+	deleteHandler(id) {
+		this.props.deleteHandler(id);
+	}
 	render() {
 		return this.props.items.map((item) => {
 			// if(this.props.filter.length > 0) {}
@@ -19,6 +22,7 @@ class ItemsList extends Component {
 						title={item.title}
 						favorite={item.favorite}
 						like={item.liked}
+						deleteHandler={this.deleteHandler.bind(this)}
 					/>
 				);
 			} else {

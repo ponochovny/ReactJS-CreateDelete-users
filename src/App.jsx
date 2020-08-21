@@ -17,6 +17,10 @@ class App extends Component {
 			filter: value,
 		});
 	}
+	deleteHandler(id) {
+		const newItems = this.state.items.filter((elem) => elem.id != id);
+		this.setState({ items: [...newItems] });
+	}
 	render() {
 		return (
 			<div className="container">
@@ -24,6 +28,7 @@ class App extends Component {
 				<ItemsList
 					items={this.state.items}
 					filter={this.state.filter}
+					deleteHandler={this.deleteHandler.bind(this)}
 				/>
 			</div>
 		);
