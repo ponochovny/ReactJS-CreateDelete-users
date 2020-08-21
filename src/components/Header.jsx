@@ -9,9 +9,9 @@ class Header extends Component {
 	state = {
 		activeCategory: 'All',
 
-		items: 3,
-		liked: 0,
-		favorite: 0,
+		// items: 3,
+		// liked: 0,
+		// favorite: 0,
 	};
 	handleInput(e) {
 		this.props.filterChange(e.target.value);
@@ -30,14 +30,14 @@ class Header extends Component {
 					</div>
 					<div className="col-md-6">
 						<p className="lead text-right">
-							Всего <strong>{this.state.items}</strong>.{' '}
-							{this.state.liked} <FaHeart /> {this.state.favorite}{' '}
-							<FaStar />
+							Всего <strong>{this.props.itemsLength}</strong>.{' '}
+							{this.props.likedLength} <FaHeart />{' '}
+							{this.props.favoriteLength} <FaStar />
 						</p>
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-md-8">
+					<div className="col-md-10">
 						<input
 							className="form-control"
 							type="text"

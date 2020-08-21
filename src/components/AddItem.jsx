@@ -7,7 +7,7 @@ class AddItem extends Component {
 	render() {
 		return (
 			<div className="row">
-				<div className="col-md-8">
+				<div className="col-md-10">
 					<input
 						className="form-control"
 						type="text"

@@ -50,7 +50,10 @@ class App extends Component {
 		this.setState({ items: newItems });
 	}
 	addItemHandler(value) {
-		const newId = this.state.items[this.state.items.length - 1].id + 1;
+		const newId =
+			this.state.items.length !== 0
+				? this.state.items[this.state.items.length - 1].id + 1
+				: 1;
 		const newItem = {
 			id: newId,
 			title: value,
@@ -67,6 +70,13 @@ class App extends Component {
 				<Header
 					filterChange={this.filterChange.bind(this)}
 					changeFilterCategory={this.changeFilterCategory.bind(this)}
+					likedLength={
+						this.state.items.filter((item) => item.liked).length
+					}
+					itemsLength={this.state.items.length}
+					favoriteLength={
+						this.state.items.filter((item) => item.favorite).length
+					}
 				/>
 				<div style={{ marginBottom: 20 }}>
 					<ItemsList
