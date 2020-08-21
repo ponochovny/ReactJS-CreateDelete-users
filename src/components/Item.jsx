@@ -22,12 +22,27 @@ class Item extends Component {
 		this.props.deleteHandler(id);
 	}
 
+	favoriteHandler(id) {
+		this.props.favoriteHandler(id);
+	}
+
+	likeHandler(id) {
+		this.props.likeHandler(id);
+	}
+
 	render() {
 		return (
 			<Div>
 				{this.props.title} - {this.props.id}{' '}
-				<FavIcon active={this.props.favorite} />{' '}
-				<LikeIcon active={this.props.like} />
+				<FavIcon
+					active={this.props.favorite}
+					onClick={this.clickHandler}
+					clicked={this.favoriteHandler.bind(this, this.props.id)}
+				/>{' '}
+				<LikeIcon
+					active={this.props.like}
+					clicked={this.likeHandler.bind(this, this.props.id)}
+				/>
 				<TrashIcon
 					clicked={this.deleteHandler.bind(this, this.props.id)}
 				/>

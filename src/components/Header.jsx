@@ -7,13 +7,19 @@ class Header extends Component {
 		super(props);
 	}
 	state = {
+		activeCategory: 'All',
+
 		items: 3,
 		liked: 0,
 		favorite: 0,
 	};
 	handleInput(e) {
-		// console.log(e.target.value);
 		this.props.filterChange(e.target.value);
+	}
+	changeFilterCategory(value) {
+		// alert(value);
+		this.setState({ activeCategory: value });
+		this.props.changeFilterCategory(value);
 	}
 	render() {
 		return (
@@ -40,10 +46,26 @@ class Header extends Component {
 							onChange={this.handleInput.bind(this)}
 						/>
 					</div>
-					<button type="button" className="btn btn-primary">
+					<button
+						type="button"
+						className={
+							this.state.activeCategory === 'All'
+								? 'btn btn-primary'
+								: 'btn btn-default'
+						}
+						onClick={this.changeFilterCategory.bind(this, 'All')}
+					>
 						Все
 					</button>
-					<button type="button" className="btn btn-default">
+					<button
+						type="button"
+						className={
+							this.state.activeCategory === 'Liked'
+								? 'btn btn-primary'
+								: 'btn btn-default'
+						}
+						onClick={this.changeFilterCategory.bind(this, 'Liked')}
+					>
 						Понравилось
 					</button>
 				</div>

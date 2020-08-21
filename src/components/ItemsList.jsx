@@ -9,9 +9,18 @@ class ItemsList extends Component {
 	deleteHandler(id) {
 		this.props.deleteHandler(id);
 	}
+	favoriteHandler(id) {
+		this.props.favoriteHandler(id);
+	}
+	likeHandler(id) {
+		this.props.likeHandler(id);
+	}
 	render() {
-		return this.props.items.map((item) => {
-			// if(this.props.filter.length > 0) {}
+		let items = this.props.items;
+		if (this.props.filterCategory === 'Liked') {
+			items = items.filter((item) => item.liked);
+		}
+		return items.map((item) => {
 			if (
 				item.title.toLowerCase().match(this.props.filter.toLowerCase())
 			) {
@@ -23,6 +32,8 @@ class ItemsList extends Component {
 						favorite={item.favorite}
 						like={item.liked}
 						deleteHandler={this.deleteHandler.bind(this)}
+						favoriteHandler={this.favoriteHandler.bind(this)}
+						likeHandler={this.likeHandler.bind(this)}
 					/>
 				);
 			} else {
